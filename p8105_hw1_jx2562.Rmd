@@ -1,0 +1,7 @@
+---
+title: "p8105_hw1_jx2562"
+author: "Jingyi"
+date: "2023-09-15"
+output: github_document
+---
+
