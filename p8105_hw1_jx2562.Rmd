@@ -2,6 +2,21 @@
 title: "p8105_hw1_jx2562"
 author: "Jingyi"
 date: "2023-09-15"
-output: github_document
+output: html_document
 ---
+
+# Problem 1
+
+```{r load_data}
+library(moderndive)
+library(ggplot2)
+data("early_january_weather")
+```
+
+```{r plot}
+ggplot(data = early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
+  geom_point()
+
+ggsave("temp over time.jpg")
+```
 
