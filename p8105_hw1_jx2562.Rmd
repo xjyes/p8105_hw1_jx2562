@@ -2,7 +2,7 @@
 title: "p8105_hw1_jx2562"
 author: "Jingyi"
 date: "2023-09-15"
-output: html_document
+output: github_document
 ---
 
 # Problem 1
@@ -30,3 +30,4 @@ ggplot(data = early_january_weather, aes(x = time_hour, y = temp, color = humid)
 ggsave("temp over time.jpg")
 ```
 
+It is apparent from the graph that as time pass by, the temperature grew gradually with fluctuation. In terms of humidity, it rose up and reached its summit in January 14.
