@@ -5,6 +5,13 @@ date: "2023-09-15"
 output: github_document
 ---
 
+```{r, message=FALSE}
+library(tidyverse)
+library(moderndive)
+library(ggplot2)
+```
+
+
 # Problem 1
 
 Here we use ggplot to scatter the correlation between _temp_ and _time_hour_, with _humid_ indicating the color of the points.
@@ -12,8 +19,6 @@ Here we use ggplot to scatter the correlation between _temp_ and _time_hour_, wi
 Load the libraries (**moderndive** and **ggplot**) and dataset (**early_january_weather**) we are going to use.
 
 ```{r load_data}
-library(moderndive)
-library(ggplot2)
 data("early_january_weather")
 ```
 
@@ -31,3 +36,36 @@ ggsave("temp over time.jpg")
 ```
 
 It is apparent from the graph that as time pass by, the temperature grew gradually with fluctuation. In terms of humidity, it rose up and reached its summit in January 14.
+
+
+# Problem 2
+
+```{r creat_df}
+df = tibble(
+  std_norm = rnorm(10),
+  logical_vec = std_norm > 0,
+  char_vec = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
+  factor_vec = factor(sample(c("Low", "Medium", "High"), size = 10, replace = TRUE))
+)
+df
+```
+
+```{r get_mean}
+mean_std_norm <- mean(df %>% pull(std_norm))
+mean_logical <- mean(df %>% pull(logical_vec))
+mean_char <- mean(df %>% pull(char_vec))
+mean_factor <- mean(df %>% pull(factor_vec))
+mean_std_norm
+mean_logical
+mean_char
+mean_factor
+```
+
+```{r convert_num}
+num_logical <- as.numeric(df %>% pull(logical_vec))
+num_char <- as.numeric(df %>% pull(char_vec))
+num_factor <- as.numeric(df %>% pull(factor_vec))
+```
+
+
+
