@@ -40,6 +40,15 @@ It is apparent from the graph that as time pass by, the temperature grew gradual
 
 # Problem 2
 
+Here we created a dataframe including _numeric_, _boolean_, _character_, and _factor_ variables. Then, some operations were conducted on the dataframe to help us better comprehend these concepts in R. 
+
+First, we created a dataframe containing: 
+*   a random sample of size 10 from a standard Normal distribution
+*   a logical vector indicating whether elements of the sample are greater than 0
+*   a character vector of length 10
+*   a factor vector of length 10, with 3 different factor “levels”
+
+
 ```{r creat_df}
 df = tibble(
   std_norm = rnorm(10),
@@ -50,6 +59,7 @@ df = tibble(
 df
 ```
 
+This below code chunk took the mean of each column and saw how it goes.
 ```{r get_mean}
 mean_std_norm <- mean(df %>% pull(std_norm))
 mean_logical <- mean(df %>% pull(logical_vec))
@@ -60,6 +70,7 @@ mean_logical
 mean_char
 mean_factor
 ```
+We can take the mean of _numeric_ and _logical_ data, but not _character_ and _factor_ variables. Instead, an NA was introduced.
 
 ```{r convert_num}
 num_logical <- as.numeric(df %>% pull(logical_vec))
@@ -67,5 +78,6 @@ num_char <- as.numeric(df %>% pull(char_vec))
 num_factor <- as.numeric(df %>% pull(factor_vec))
 ```
 
+Except for character variable, the other two data types can be converted to _numeric_ data. The result coincided with taking the mean except for the _factor_ variable. Factor variables were discrete labels but not numbers, so we cannot take their means. The function `mean()` will not convert the _factor_ variables and _character_ variable to _numeric_ data first. If we want to calculate the mean of factor variable, we can convert it to _numeric_ data with `as.numeric()`.
 
 
