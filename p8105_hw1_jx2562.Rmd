@@ -21,9 +21,17 @@ Load the libraries (**moderndive** and **tidyverse**) and dataset (**early_janua
 data("early_january_weather")
 ```
 
-The data frame gives the detailed information about the weather in the early Janurary. The variables in the dataset includes _`r colnames(early_january_weather)`_. The means for _temp_ and _humid_ are `r round(mean(early_january_weather$temp), 2)` and `r round(mean(early_january_weather$humid), 2)`. The standard deviation for _temp_ and _humid_ are `r round(sd(early_january_weather$temp), 2)` and `r round(sd(early_january_weather$humid), 2)`. The first five rows of the dataset are given below.
+The data frame gives the detailed information about the weather in the early Janurary. The variables in the dataset includes _`r colnames(early_january_weather)`_. 
+
+The means for _temp_ and _humid_ are `r round(mean(early_january_weather$temp), 2)` and `r round(mean(early_january_weather$humid), 2)`. 
+
+The standard deviation for _temp_ and _humid_ are `r round(sd(early_january_weather$temp), 2)` and `r round(sd(early_january_weather$humid), 2)`. 
+
+The start _time_hour_ is `r min(early_january_weather$time_hour)` and it ends at `r max(early_january_weather$time_hour)`
 
 The dataset **early_january_weather** include `r ncol(early_january_weather)` columns and `r nrow(early_january_weather)` rows. 
+
+The first five rows of the dataset are given below.
 
 ```{r show_df}
 head(early_january_weather)
