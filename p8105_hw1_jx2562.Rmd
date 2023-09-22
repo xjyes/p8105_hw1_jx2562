@@ -8,25 +8,28 @@ output: github_document
 ```{r, message=FALSE}
 library(tidyverse)
 library(moderndive)
-library(ggplot2)
 ```
 
 
 # Problem 1
 
-Here we use ggplot to scatter the correlation between _temp_ and _time_hour_, with _humid_ indicating the color of the points.
+Here we use ggplot to scatter the correlation between _temp_ and _time_hour_ in the **early_january_weather** data frame, with _humid_ indicating the color of the points.
 
-Load the libraries (**moderndive** and **ggplot**) and dataset (**early_january_weather**) we are going to use.
+Load the libraries (**moderndive** and **tidyverse**) and dataset (**early_january_weather**) we are going to use.
 
 ```{r load_data}
 data("early_january_weather")
 ```
 
+The data frame gives the detailed information about the weather in the early Janurary. The variables in the dataset includes _`r colnames(early_january_weather)`_. The means for _temp_ and _humid_ are `r round(mean(early_january_weather$temp), 2)` and `r round(mean(early_january_weather$humid), 2)`. The standard deviation for _temp_ and _humid_ are `r round(sd(early_january_weather$temp), 2)` and `r round(sd(early_january_weather$humid), 2)`. The first five rows of the dataset are given below.
+
 The dataset **early_january_weather** include `r ncol(early_january_weather)` columns and `r nrow(early_january_weather)` rows. 
 
-The variables in the dataset includes _`r colnames(early_january_weather)`_. 
+```{r show_df}
+head(early_january_weather)
+```
 
-The mean of the temperature in the early january is `r mean(early_january_weather$temp)`.
+Here we make a scatterplot of _temp_ and _time_hour_ with color indicating the _humid_.
 
 ```{r plot}
 ggplot(data = early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
@@ -35,17 +38,21 @@ ggplot(data = early_january_weather, aes(x = time_hour, y = temp, color = humid)
 ggsave("temp over time.jpg")
 ```
 
-It is apparent from the graph that as time pass by, the temperature grew gradually with fluctuation. In terms of humidity, it rose up and reached its summit in January 14.
+It is apparent from the graph that as time pass by, the temperature grew gradually with fluctuation. In terms of humidity, it rose up with the temperature and reached its summit in January 14.
 
 
 # Problem 2
 
 Here we created a dataframe including _numeric_, _boolean_, _character_, and _factor_ variables. Then, some operations were conducted on the dataframe to help us better comprehend these concepts in R. 
 
-First, we created a dataframe containing: 
+First, we created a data frame containing: 
+
 *   a random sample of size 10 from a standard Normal distribution
+
 *   a logical vector indicating whether elements of the sample are greater than 0
+
 *   a character vector of length 10
+
 *   a factor vector of length 10, with 3 different factor “levels”
 
 
@@ -60,7 +67,7 @@ df
 ```
 
 This below code chunk took the mean of each column and saw how it goes.
-```{r get_mean}
+```{r get_mean, warning=FALSE}
 mean_std_norm <- mean(df %>% pull(std_norm))
 mean_logical <- mean(df %>% pull(logical_vec))
 mean_char <- mean(df %>% pull(char_vec))
